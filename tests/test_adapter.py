@@ -314,6 +314,72 @@ class AdapterTests(unittest.TestCase):
         self.assertIsNone(self.app.nes)
         draw.assert_called_once()
 
+    def test_discovery_accepts_bounded_mmc3_and_rejects_unsupported_mapper(self):
+        header = bytearray(b'NES\x1a' + bytes(12))
+        header[4:8] = bytes((2, 1, 0x40, 0))
+        rom = self.root / 'roms' / 'mapper-four.nes'
+        rom.write_bytes(header + bytes(32768 + 8192))
+        entries = {item['file']: item for item in adapter.discover(str(rom.parent))}
+        self.assertEqual(entries[rom.name]['meta']['mapper'], 4)
+        self.assertEqual(entries[rom.name]['error'], '')
+        header[6] = 0x50
+        rom.write_bytes(header + bytes(32768 + 8192))
+        entries = {item['file']: item for item in adapter.discover(str(rom.parent))}
+        self.assertIsNone(entries[rom.name]['meta'])
+        self.assertIn('Unsupported mapper', entries[rom.name]['error'])
+
+    def test_legacy_mapper_launch_does_not_import_mmc3_or_change_render_contract(self):
+        import builtins
+        real_import = builtins.__import__
+        def legacy_import(name, *args, **kwargs):
+            if 'mmc3' in name:
+                self.fail('Legacy launch imported the MMC3 core')
+            return real_import(name, *args, **kwargs)
+        for mapper in range(4):
+            with self.subTest(mapper=mapper):
+                self.entry['meta']['mapper'] = mapper
+                core = Core()
+                module = types.SimpleNamespace(NES=Mock(return_value=core), NES_PALETTE=[])
+                with patch.dict(sys.modules, {adapter.__name__ + '.emu': module}), \
+                        patch('builtins.__import__', side_effect=legacy_import):
+                    self.assertTrue(self.app.launch(0))
+                module.NES.assert_called_once_with(str(self.root / 'roms' / 'original.nes'))
+                self.app.update()  # Discard time spent opening the game.
+                self.app.update()
+                self.assertEqual(core.draws, 1)
+                self.assertEqual(self.app.mode, 'game')
+
+    def test_mapper_four_uses_full_palette_and_switching_back_restores_legacy_path(self):
+        class MMC3Core(Core):
+            def __init__(self):
+                super().__init__()
+                self.master_palettes = []
+            def render(self, framebuffer, palette, pixel_bytes, scanlines, *, master_palette):
+                super().render(framebuffer, palette, pixel_bytes, scanlines)
+                self.master_palettes.append(master_palette)
+        mmc3_core, legacy_core = MMC3Core(), Core()
+        mmc3 = types.SimpleNamespace(NES=Mock(return_value=mmc3_core), NES_PALETTE=[])
+        legacy = types.SimpleNamespace(NES=Mock(return_value=legacy_core), NES_PALETTE=[])
+        four = dict(self.entry, meta={'mapper': 4, 'size': 40976})
+        self.app.games.append(four)
+        with patch.dict(sys.modules, {adapter.__name__ + '.emu_mmc3': mmc3,
+                                      adapter.__name__ + '.emu': legacy}):
+            self.assertTrue(self.app.launch(1))
+            legacy.NES.assert_not_called()
+            mmc3.NES.assert_called_once()
+            self.app.update()
+            self.app.update()
+            self.assertEqual(mmc3_core.draws, 1)
+            self.assertIs(mmc3_core.master_palettes[0], self.app.hw_palette)
+            self.assertTrue(self.app.launch(0))
+            self.app.update()
+            self.app.update()
+            legacy.NES.assert_called_once()
+            self.assertEqual(legacy_core.draws, 1)
+            self.assertEqual(mmc3_core.draws, 1)
+            self.assertEqual(self.app.mode, 'game')
+
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -9,10 +9,12 @@ import os
 import time
 try:
     from .font5x7 import GLYPHS as FONT
-    from .cartridge import inspect_rom, load_sram, save_sram
+    from .cartridge_mmc3 import inspect_rom
+    from .cartridge import load_sram, save_sram
 except ImportError:
     from font5x7 import GLYPHS as FONT
-    from cartridge import inspect_rom, load_sram, save_sram
+    from cartridge_mmc3 import inspect_rom
+    from cartridge import load_sram, save_sram
 
 APP_DIR='/system/apps/nes'
 FRAME_US=16667
@@ -141,7 +143,8 @@ class NESApp:
             item=self.games[self.selected]
             detail=item['error'] or ('MAPPER '+str(item['meta']['mapper'])+' / '+str(item['meta']['size']//1024)+' KB')
             self.text(detail[:49],12,207,4 if item['error'] else 2)
-        self.text('UP/DOWN CHOOSE   A/START PLAY',12,225,5)
+        self.text('UP/DOWN CHOOSE   A/START OPEN',12,219,5)
+        self.text('PRESS START AGAIN AT GAME TITLE',12,231,2)
         self.dirty=False
 
     def build_palette(self,colors):
@@ -163,8 +166,12 @@ class NESApp:
             return False
         self.nes=None;gc.collect()
         try:
-            try:from .emu import NES,NES_PALETTE
-            except ImportError:from emu import NES,NES_PALETTE
+            if entry['meta']['mapper']==4:
+                try:from .emu_mmc3 import NES,NES_PALETTE
+                except ImportError:from emu_mmc3 import NES,NES_PALETTE
+            else:
+                try:from .emu import NES,NES_PALETTE
+                except ImportError:from emu import NES,NES_PALETTE
             path=self.app_dir+'/roms/'+entry['file']
             # A content-derived ID avoids collisions and untrusted save filenames.
             import hashlib,binascii
@@ -279,7 +286,10 @@ class NESApp:
             for i in range(32):self.palette[i]=self.hw_palette[self.nes.mem[0x0900+i]&63]
             # Firmware fence before raw Viper stores; black sidebars preserve 1:1 pixels.
             self.screen.pen=self.pens[0];self.screen.rectangle(0,0,32,240);self.screen.rectangle(288,0,32,240)
-            self.nes.render(self.screen.raw,self.palette,2,False)
+            if self.active['meta']['mapper']==4:
+                self.nes.render(self.screen.raw,self.palette,2,False,master_palette=self.hw_palette)
+            else:
+                self.nes.render(self.screen.raw,self.palette,2,False)
             self.frames+=1
             if self.fps_elapsed>=1:
                 self.fps=round(self.frames/self.fps_elapsed);self.frames=0;self.fps_elapsed=0

@@ -21,13 +21,21 @@ does not establish full-speed play or complete game compatibility.
 
 ## Compatibility and current limits
 
-The core supports selected iNES NTSC cartridges using mappers **0, 1, 2 and 3**.
+The core supports selected iNES NTSC cartridges using mappers **0, 1, 2 and 3**,
+plus **experimental standard MMC3B-style mapper 4** support.
 Mapper support alone does not guarantee that a game will play correctly. This is
 a small badge emulator with selective compatibility, not a replacement for a
 full desktop emulator.
 
-Short scripted checks on a **230 MHz Badger 2350**, with **HIRES + VSYNC** on
-2026-10-28, completed without emulator errors for all three included games:
+Mapper 4 accepts 32–512 KiB PRG ROM and 8–256 KiB CHR ROM with power-of-two
+bank counts. MMC6, CHR RAM, four-screen boards and NES 2 headers are unsupported.
+IRQ timing and rendering are approximate. More demanding games may run much
+slower; neither full-speed play nor perfect raster effects are promised.
+
+The following **historical measurements cover the bundled games on the original
+mapper 0–3 core**, not mapper 4 performance. Short scripted checks on a **230 MHz
+Badger 2350**, with **HIRES + VSYNC** on 2026-10-28, completed without emulator
+errors for all three included games:
 
 | Game | Final display counter (fps) | Emulated average (fps) |
 | --- | ---: | ---: |
@@ -91,7 +99,9 @@ cable that carries data. No firmware flashing is required.
    from this repository's `apps/` directory into **`BADGER/apps/`**. Keep every
    module, game, license and asset together.
 4. Wait for copying to finish, safely eject the drive, then restart the badge.
-5. Open **NES** from the supplied launcher and select a game from its library.
+5. Open **NES**, choose a game with Up/Down, and press A or Start to open it.
+   Release the opening button, then press Start at the game's title screen when
+   prompted to begin play.
 
 The final path is `BADGER/apps/nes/__init__.py`. The BADGER root already
 represents the system volume; do not create another nested `system` directory.
@@ -136,22 +146,30 @@ source repositories and shared packages.
 
 ## Controls
 
-| Badge control | During a game |
+Use the labels on the printed NES control card:
+
+| Printed control | During a game |
 | --- | --- |
-| Directional controls | NES D-pad |
-| Back touch pad or physical Select | NES A |
-| Select touch pad | NES B |
-| Home touch pad | NES Start |
-| Menu touch pad | NES Select |
-| Hold NES Start + Select for 0.7 seconds | Open pause menu |
+| Directional cross | NES D-pad |
+| A | NES A / confirm |
+| B | NES B |
+| Start | NES Start |
+| Select | NES Select |
+| Hold Start + Select for 0.7 seconds | Open app pause menu |
 | Physical Home button | Return to the supplied launcher |
 
-The Home touch pad and physical Home button have different roles. A + B can be
-held together without opening the pause menu.
+The badge's separate physical Select button also acts as A. The card's Start
+control and physical Home button have different roles. A + B can be held together
+without opening the pause menu.
 
-In the library, **Up / Down** chooses a game, **A or Start** plays it, and **B**
-goes back. In the pause menu, **Up / Down** chooses an option, **A** confirms,
+In the library, **Up / Down** chooses a game and **A or Start** opens it. Release
+the opening button, then press **Start** at its title screen when prompted.
+In the app pause menu, **Up / Down** chooses an option, **A** confirms,
 and **B** resumes the game. Release both pause-chord pads before pausing again.
+
+During play, Start may toggle the game's own pause. Press it again to resume if
+the game uses Start for pause. This differs from the app menu opened by holding
+Start + Select for 0.7 seconds.
 
 Pause before using physical Home so the app can save battery-backed SRAM. If
 **SAVE FAILED** appears, resolve the storage problem before leaving; the physical
@@ -181,8 +199,12 @@ their generated objects and rebuilt cartridges are not export inputs.
 - **App missing:** check the exact folder path and avoid double-nested folders.
 - **Game rejected:** check the cartridge format and supported mapper/size limits.
   Renaming a ROM does not make an unsupported cartridge compatible.
+- **Movement or jumping seems inactive:** a title screen or automatic demo may
+  be showing. Release the opening button, then press Start to begin. If the game
+  is paused, press Start again according to its own controls.
 - **Visual errors or slow play:** compatibility and speed are game-dependent.
-  Use the physical Home button to leave the app if necessary.
+  Demanding mapper 4 games can be substantially slower. Pause to save before
+  using physical Home to leave the app.
 - **No sound:** the emulator is intentionally silent.
 
 ## Credits and maintenance

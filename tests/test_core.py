@@ -142,6 +142,17 @@ class OpcodeAndMapperTests(unittest.TestCase):
         self.assertEqual(core.mem[0x20], 0x42)
         self.assertEqual(core.st[emu.REG_SP], 0xfd)
 
+    def test_controller_latch_reads_each_button_and_simultaneous_actions(self):
+        # Original 6502 fixture: strobe $4016 high/low, then store eight serial
+        # bits at $10-$17. Bit order is A, B, Select, Start, Up, Down, Left, Right.
+        program = bytes.fromhex('a9 01 8d 16 40 a9 00 8d 16 40 a2 00 '
+                                'ad 16 40 29 01 95 10 e8 e0 08 d0 f4')
+        for mask in (0, 1, 2, 4, 8, 16, 32, 64, 128, 3, 129, 131):
+            with self.subTest(mask=mask):
+                core = self.core(program)
+                core.step_frame(mask)
+                self.assertEqual(list(core.mem[0x10:0x18]), [(mask >> bit) & 1 for bit in range(8)])
+
     def test_brk_pushes_pc_plus_two_and_returns_with_rti(self):
         core = self.core(bytes.fromhex("00 ea a9 77 85 20 4c 06 80"))
         core.prg[0x100:0x103] = bytes.fromhex("e6 21 40")
