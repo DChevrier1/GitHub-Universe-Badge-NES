@@ -1,0 +1,11 @@
+{
+  "description": "Only header bytes7,8,10 normalized from NES2 to equivalent iNES1: mapper1,128KiB PRG,128KiB CHR,8KiB battery SRAM,NTSC. All PRG and CHR data are unchanged.",
+  "original_sha256": "45d18d8b3662e6c08043759e550e658bcd23e48394a00f24de5e5fbe57e4900a",
+  "original_header": "4e45531a081013080000700000000000",
+  "normalized_header": "4e45531a081013000100000000000000",
+  "sha256": "7defa774cdf37c66e651e90cb6b20922ac20b4fc47135a3a40f633f255100663",
+  "bytes": 262160,
+  "prg_chr_sha256": "19468fa0ce65c43c162bbe117d436a8b660288051a7f5fdb4aa77362184316c9",
+  "source": "https://github.com/mhughson/mbh-cart/releases/tag/v1.0",
+  "license": "MIT"
+}

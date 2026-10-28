@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.local/
+dist/
+.env*
+secrets.py
+config.json
+state/
+*.log
+*.zip
+*.db

@@ -1,0 +1,35 @@
+{
+  "tested_at": "2026-10-28",
+  "board": "GitHub Universe 2026 Badger 2350",
+  "clock_mhz": 230,
+  "firmware": "MonaOS 4 / MicroPython 1.29 preview",
+  "mode": "HIRES | VSYNC",
+  "core_sha256": "a66aa95193217f5549d6f8002d9efadbc60737536330a810ce403661b12c5570",
+  "method": "Each game ran through the native display loop for 10 seconds after 720 warm-up emulated frames. Start was held on frames 400-409 and A on 700-709. Display FPS is the final one-second counter, while emulated FPS covers the full measured interval. Three framebuffer captures passed byte count and SHA-256 verification. These are short scripted checks, not full playthroughs or a battery-runtime test.",
+  "controller_manual_test": "Owner confirmed opening a game with A/Start, directional controls, holding Start + Select for 700 ms to pause, returning to the game library, and the display.",
+  "games": [
+    {
+      "id": "2048",
+      "display_fps": 15,
+      "emulated_fps": 29.38,
+      "test_seconds": 10.041,
+      "result": "Puzzle board rendered; native loop completed without errors."
+    },
+    {
+      "id": "falling",
+      "display_fps": 18,
+      "emulated_fps": 35.26,
+      "test_seconds": 10.011,
+      "result": "Gameplay and game-over screens rendered; native loop completed without errors."
+    },
+    {
+      "id": "minekart-madness",
+      "display_fps": 22,
+      "emulated_fps": 46.27,
+      "test_seconds": 10.006,
+      "result": "Gameplay rendered beyond the title screen; native loop completed without errors."
+    }
+  ],
+  "controller_manual_tested_at": "2026-10-28",
+  "controller_manual_report": "Controls and display work."
+}

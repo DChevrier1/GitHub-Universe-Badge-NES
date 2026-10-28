@@ -1,0 +1,30 @@
+{
+  "id": "minekart-madness",
+  "title": "Minekart Madness",
+  "author": "Matthew Hughson",
+  "repo": "mhughson/mbh-cart",
+  "commit": "70f7fc710c1135c07e62927af6653b1373e47faa",
+  "rom_url": "https://github.com/mhughson/mbh-cart/releases/download/v1.0/minekart_madness_mmc1.nes",
+  "license": "LICENSE",
+  "license_spdx": "MIT",
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/mhughson/mbh-cart/70f7fc710c1135c07e62927af6653b1373e47faa/LICENSE",
+      "sha256": "f46e7bb719edf69363e449637b960c4d157fd634117f3ffad5d8a728e2a2b75d",
+      "bytes": 1072
+    },
+    {
+      "path": "UPSTREAM_README.md",
+      "url": "https://raw.githubusercontent.com/mhughson/mbh-cart/70f7fc710c1135c07e62927af6653b1373e47faa/README.md",
+      "sha256": "2f3579b5a1c563c52758a2e157f17e78c2c7b45c64cb7d61d13bcdc302949375",
+      "bytes": 2974
+    },
+    {
+      "path": "minekart-madness.nes",
+      "url": "https://github.com/mhughson/mbh-cart/releases/download/v1.0/minekart_madness_mmc1.nes",
+      "sha256": "45d18d8b3662e6c08043759e550e658bcd23e48394a00f24de5e5fbe57e4900a",
+      "bytes": 262160
+    }
+  ]
+}

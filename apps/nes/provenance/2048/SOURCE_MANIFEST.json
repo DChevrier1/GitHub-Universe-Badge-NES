@@ -1,0 +1,110 @@
+[
+  {
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/LICENSE",
+    "bytes": 1071,
+    "sha256": "3dc37fbf59c95ef331e6805509770320810444ba926d08334b6e20074959831b"
+  },
+  {
+    "path": "Makefile",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/Makefile",
+    "bytes": 883,
+    "sha256": "e68e1b56892145af7dba579ee4da59c2815678af623ddecaa74e1d306913d1ca"
+  },
+  {
+    "path": "nrom.cfg",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/nrom.cfg",
+    "bytes": 2217,
+    "sha256": "dcfac531cc899c14fab17ee47c0822c381c039ab0e8c3faf2a3b4995d16f5e14"
+  },
+  {
+    "path": "data/2048.chr",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/data/2048.chr",
+    "bytes": 8192,
+    "sha256": "7571f94eadf99117cd35d4d5b5f4af2736bf5f7c46d139a8c2b5007ea13b4e9d"
+  },
+  {
+    "path": "data/board-background.nam",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/data/board-background.nam",
+    "bytes": 1024,
+    "sha256": "362fad36af25f18b92a7ef475c909ec1e1abb438c59a0ca37d9b73bf42706f0e"
+  },
+  {
+    "path": "src/2048.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/2048.s",
+    "bytes": 5687,
+    "sha256": "a25f95fa5489ea6cad732519ec13cc6a44da2cf567312ddf01e7c4e19e1f38b6"
+  },
+  {
+    "path": "src/blit.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/blit.s",
+    "bytes": 1981,
+    "sha256": "3ed69604cedb1ac1421452f697a4039e481175ca8dba9d1103ac9702827556f8"
+  },
+  {
+    "path": "src/board.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/board.s",
+    "bytes": 13957,
+    "sha256": "c45203010dff6e5e9a2b2ffe40e761ba7c8dce22ba0a8ca46b3400c9f56281a8"
+  },
+  {
+    "path": "src/controller.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/controller.s",
+    "bytes": 790,
+    "sha256": "adc4e24a6d603ec8b5875f271ce871947c481e36f8d88e1946d51839bebb4f67"
+  },
+  {
+    "path": "src/defs.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/defs.s",
+    "bytes": 1425,
+    "sha256": "ee74ab6e751dc218e081da347c2d482ea7fb6c738b4b264e4db0b5d2563b3f11"
+  },
+  {
+    "path": "src/drawing.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/drawing.s",
+    "bytes": 13843,
+    "sha256": "dd88e3cccd0b1530d71f5d4b6d2ebb04392d6701ec2394f6bc1215e3d05e6822"
+  },
+  {
+    "path": "src/header.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/header.s",
+    "bytes": 526,
+    "sha256": "d9f3b50f3ec15caf0fa61208ff7de3da5220d75613323405d7960ad25649ce81"
+  },
+  {
+    "path": "src/nmi.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/nmi.s",
+    "bytes": 5197,
+    "sha256": "b6e3a3c4db048b95995fb126a9c6eba87050b95485b1f2cd33a34fbdd87bd2e8"
+  },
+  {
+    "path": "src/startup.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/startup.s",
+    "bytes": 1136,
+    "sha256": "e95a73ad93e6cda6714082ee6fd9979c6801055653019ac16b8d82ae628af676"
+  },
+  {
+    "path": "src/tests.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/tests.s",
+    "bytes": 2281,
+    "sha256": "ca829cc07004622f3f99160c3260ba02b5805f44de1ddac004f4316db91239e9"
+  },
+  {
+    "path": "src/tile-lookups.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/src/tile-lookups.s",
+    "bytes": 2173,
+    "sha256": "de2702373c56f9daa6e11c22f0183ea9642c61233a4a6fbc3a07adc6875de5e1"
+  },
+  {
+    "path": "test/helpers.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/test/helpers.s",
+    "bytes": 6221,
+    "sha256": "2853e2460eaa2656e2e001a76fb141b529d40175f51e55851fdcfe4cefd78633"
+  },
+  {
+    "path": "test/test-board.s",
+    "url": "https://raw.githubusercontent.com/jmgregory/2048-nes/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44/test/test-board.s",
+    "bytes": 18642,
+    "sha256": "df694dbea3a37b7729cbadae62691a7b37afd9e74c62c9ef1eade11a24fba385"
+  }
+]

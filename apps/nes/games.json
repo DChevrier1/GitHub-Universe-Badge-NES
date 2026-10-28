@@ -1,0 +1,43 @@
+[
+  {
+    "id": "falling",
+    "title": "Falling",
+    "file": "roms/falling.nes",
+    "sha256": "e22b947542c2d7e595bf84725b333be7af8189c5965b9c53e356a249c7d79943",
+    "license": "MIT",
+    "license_file": "licenses/falling-MIT.txt",
+    "author": "Jesse Williams (tragicmuffin)",
+    "source_url": "https://github.com/xram64/falling-nes/tree/52dcb8a951200562e696dfc2aba5d4d14edd0078",
+    "source_commit": "52dcb8a951200562e696dfc2aba5d4d14edd0078",
+    "mapper": 0,
+    "status": "Badge tested: about 18 display FPS; experimental, below full speed"
+  },
+  {
+    "id": "minekart-madness",
+    "title": "Minekart Madness",
+    "file": "roms/minekart-madness.nes",
+    "sha256": "7defa774cdf37c66e651e90cb6b20922ac20b4fc47135a3a40f633f255100663",
+    "license": "MIT",
+    "license_file": "licenses/minekart-MIT.txt",
+    "author": "Matthew Hughson",
+    "source_url": "https://github.com/mhughson/mbh-cart/tree/70f7fc710c1135c07e62927af6653b1373e47faa",
+    "source_commit": "70f7fc710c1135c07e62927af6653b1373e47faa",
+    "mapper": 1,
+    "status": "Badge tested: about 22 display FPS; experimental, below full speed",
+    "modification": "iNES 1 header normalization only; PRG/CHR unchanged",
+    "original_sha256": "45d18d8b3662e6c08043759e550e658bcd23e48394a00f24de5e5fbe57e4900a"
+  },
+  {
+    "id": "2048",
+    "title": "2048",
+    "file": "roms/2048.nes",
+    "sha256": "b1468ace1dcbf374a5202a26707b3d1a2fb11924a79aab877079730fe4f72ed6",
+    "license": "MIT",
+    "license_file": "licenses/2048-MIT.txt",
+    "author": "Justin Gregory",
+    "source_url": "https://github.com/jmgregory/2048-nes/tree/e80a02a4d60b4e017ccbb14ae9230f933b7c2a44",
+    "source_commit": "e80a02a4d60b4e017ccbb14ae9230f933b7c2a44",
+    "mapper": 0,
+    "status": "Badge tested: about 15 display FPS; experimental, below full speed"
+  }
+]

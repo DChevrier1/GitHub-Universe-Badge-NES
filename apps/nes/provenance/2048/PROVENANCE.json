@@ -1,0 +1,102 @@
+{
+  "id": "2048",
+  "title": "2048",
+  "author": "Justin Gregory",
+  "license_spdx": "MIT",
+  "source": "https://github.com/jmgregory/2048-nes",
+  "commit": "e80a02a4d60b4e017ccbb14ae9230f933b7c2a44",
+  "bytes": 40976,
+  "sha256": "b1468ace1dcbf374a5202a26707b3d1a2fb11924a79aab877079730fe4f72ed6",
+  "toolchain": "Ubuntu noble cc65 2.19-1 amd64 (ca65/ld65)",
+  "commands": [
+    [
+      "ca65",
+      "-o",
+      "obj/2048.o",
+      "src/2048.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/blit.o",
+      "src/blit.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/board.o",
+      "src/board.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/controller.o",
+      "src/controller.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/drawing.o",
+      "src/drawing.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/header.o",
+      "src/header.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/nmi.o",
+      "src/nmi.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/startup.o",
+      "src/startup.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/tests.o",
+      "src/tests.s",
+      "--debug-info"
+    ],
+    [
+      "ca65",
+      "-o",
+      "obj/tile-lookups.o",
+      "src/tile-lookups.s",
+      "--debug-info"
+    ],
+    [
+      "ld65",
+      "-o",
+      "2048.nes",
+      "obj/2048.o",
+      "obj/blit.o",
+      "obj/board.o",
+      "obj/controller.o",
+      "obj/drawing.o",
+      "obj/header.o",
+      "obj/nmi.o",
+      "obj/startup.o",
+      "obj/tests.o",
+      "obj/tile-lookups.o",
+      "-C",
+      "nrom.cfg",
+      "--dbgfile",
+      "2048.nes.db"
+    ]
+  ]
+}
