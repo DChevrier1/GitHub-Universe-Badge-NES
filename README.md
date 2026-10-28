@@ -98,9 +98,41 @@ represents the system volume; do not create another nested `system` directory.
 Keep all stock apps, credentials, settings and unrelated files. Do not replace
 the whole apps directory, format the drive, or flash a UF2.
 
-To update or roll back, replace only the NES custom app folder after making a
-verified local backup. To uninstall, remove only `apps/nes/`; preserve separate
-save data unless you intentionally want to reset progress.
+Before updating or rolling back, follow the backup steps below. Replace only the
+NES app files, retain your separately backed-up local ROMs, and preserve SRAM.
+To uninstall, remove only `apps/nes/`; preserve separate save data unless you
+intentionally want to reset progress.
+
+## Adding your own games and keeping them through updates
+
+The installed app can discover user-supplied `.nes` files. Use games you have
+permission to use; loading a local file does not add it to this repository's
+reviewed catalog or establish compatibility.
+
+1. Pause any running game to save SRAM, resolve any **SAVE FAILED** message, then
+   open USB Disk / Mass Storage.
+2. Keep a private backup of your ROM on your computer. Copy only the additional
+   `.nes` file into **`BADGER/apps/nes/roms/`**, using a distinct filename. Keep
+   existing games and app files; do not replace the whole `roms` folder.
+3. Safely eject, restart the badge, and open NES. Choose the local game from its
+   library. The loader reports unsupported formats or mapper combinations.
+
+Before an app update, back up the existing `apps/nes/` folder, including your
+local games, outside this source repository. Back up SRAM separately from
+**`/state/nes_badge/`** using filesystem/serial access that can read that native
+path. It may not be visible on the BADGER USB drive: copying the app folder alone
+does not back up SRAM. Keep its filenames and file contents unchanged.
+
+Install the updated app, then retain or restore your local ROM files into its
+`roms/` folder from the private backup. Preserve `/state/nes_badge/` in place;
+restore a verified backup only when recovery is needed. An update should not
+format storage or reset saves. SRAM identity depends on ROM contents, so keep the
+same ROM bytes when continuing a saved game.
+
+Repository builds and the companion's downloads contain only the explicitly
+allowlisted games. They do not collect additional games from your badge. Keep
+local ROMs, their screenshots and metadata, saves, and device backups out of
+source repositories and shared packages.
 
 ## Controls
 
